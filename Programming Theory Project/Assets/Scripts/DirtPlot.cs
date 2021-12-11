@@ -12,12 +12,16 @@ public class DirtPlot : MonoBehaviour
     public bool isWet;
     public bool isPlanted;
 
+    private GameObject spawnCrop;
+
     public void PlantPotato(int currentDirtPlot)
     {
         Debug.Log("Potato seed planted at dirt plot: " + currentDirtPlot);
         isPlanted = true;
-        Instantiate(crops[0], gameObject.transform.position, gameObject.transform.rotation);
+        spawnCrop = Instantiate(crops[0], gameObject.transform.position, gameObject.transform.rotation);
+        spawnCrop.tag = "Crop" + currentDirtPlot;
         crops[0].GetComponent<Potato>().currentDirtPlot = currentDirtPlot;
+        
     }
     public void PlantTomato(int currentDirtPlot)
     {

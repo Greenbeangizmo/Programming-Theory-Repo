@@ -6,6 +6,31 @@ TagManager:
   tags:
   - DirtPlot
   - CropManager
+  - Crop0
+  - Crop1
+  - Crop2
+  - Crop3
+  - Crop4
+  - Crop5
+  - Crop6
+  - Crop7
+  - Crop8
+  - Crop9
+  - Crop10
+  - Crop11
+  - Crop12
+  - Crop13
+  - Crop14
+  - Crop15
+  - Crop16
+  - Crop17
+  - Crop18
+  - Crop19
+  - Crop20
+  - Crop21
+  - Crop22
+  - Crop23
+  - Crop24
   layers:
   - Default
   - TransparentFX

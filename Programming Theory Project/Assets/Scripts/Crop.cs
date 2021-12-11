@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public abstract class Crop : MonoBehaviour
+public abstract class Crop : MonoBehaviour //INHERITANCE
 {
     protected int growthTime;
 
@@ -19,9 +20,12 @@ public abstract class Crop : MonoBehaviour
 
     protected CropManager cropManagerScript;
 
-    protected GameObject stageOneCrop;
-    protected GameObject stageTwoCrop;
-    protected GameObject stageThreeCrop;
+    protected GameObject stageOneCrop; //Reference to Prefab
+    protected GameObject stageTwoCrop; //Reference to Prefab
+    protected GameObject stageThreeCrop; //Reference to Prefab
+
+    protected GameObject spawnCropTwo; //Reference to Created GameObject
+    protected GameObject spawnCropThree; //Reference to Created GameObject
 
 
     public virtual IEnumerator Growth()
@@ -31,7 +35,7 @@ public abstract class Crop : MonoBehaviour
         
         stageTwoCrop = cropManagerScript.cropStages[stageTwo];
         stageThreeCrop = cropManagerScript.cropStages[stageThree];
-        Debug.Log("Stage 1");
+        //Debug.Log("Stage 1");
 
         yield return new WaitForSeconds(growthTime);
 
@@ -40,21 +44,25 @@ public abstract class Crop : MonoBehaviour
             stageOneCrop.transform.GetChild(i).gameObject.SetActive(false);
         }
 
-        Debug.Log("Stage 2");
-        Instantiate(stageTwoCrop, gameObject.transform.position, gameObject.transform.rotation);
-        
+        //Debug.Log("Stage 2");
+        spawnCropTwo = Instantiate(stageTwoCrop, gameObject.transform.position, gameObject.transform.rotation);
+        spawnCropTwo.tag = "Crop" + currentDirtPlot;
+
         yield return new WaitForSeconds(growthTime);
 
-        for (int i = 0; i < stageTwoCrop.transform.childCount; i++)
-        {
-            stageTwoCrop.transform.GetChild(i).gameObject.SetActive(false);
-        }
+        spawnCropTwo.gameObject.SetActive(false);
 
-        Debug.Log("Stage 3");
-        Instantiate(stageThreeCrop, gameObject.transform.position, gameObject.transform.rotation);
-        
+        //Debug.Log("Stage 3");
+        spawnCropThree = Instantiate(stageThreeCrop, gameObject.transform.position, gameObject.transform.rotation);
+        spawnCropThree.tag = "Crop" + currentDirtPlot;
 
-        //yield return null;
+
+        //yield return new WaitForSeconds(growthTime);
+        //Destroy(spawnCropThree);
+        //Destroy(spawnCropTwo);
+        //Destroy(stageOneCrop);
+
+        yield return null;
 
     }
 
