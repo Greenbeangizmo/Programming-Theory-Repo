@@ -73,11 +73,11 @@ public class PlayerClicker : MonoBehaviour
                     //Debug.Log(hit.collider.gameObject.transform.parent.tag);
                     if (hit.collider.gameObject.transform.parent.tag == "Crop" + i && hit.collider.gameObject.transform.parent.name.Contains("3"))
                     {
-                        Debug.Log("Crop" + i + " is named: " + hit.collider.gameObject.name);
+                        //Debug.Log("Crop" + i + " is named: " + hit.collider.gameObject.name);
                         GameObject[] cropsToHarvest = GameObject.FindGameObjectsWithTag("Crop" + i);
 
                         currentDirtPlot = i;
-                        
+
                         foreach (GameObject crop in cropsToHarvest)
                         {
                             Destroy(crop);
@@ -86,6 +86,12 @@ public class PlayerClicker : MonoBehaviour
 
                         FindCropTypeSeeds(); //ABSTRACTION
                     }
+                }
+
+                if (hit.collider.gameObject.tag == "WaterWell")
+                {
+                    GameManager.WaterLevel = 100;
+                    cropManagerScript.inventoryValues[0].text = GameManager.WaterLevel + "%";
                 }
 
             }
