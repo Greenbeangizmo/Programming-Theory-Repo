@@ -47,6 +47,7 @@ public abstract class Crop : MonoBehaviour //INHERITANCE
         //Debug.Log("Stage 2");
         spawnCropTwo = Instantiate(stageTwoCrop, gameObject.transform.position, gameObject.transform.rotation);
         spawnCropTwo.tag = "Crop" + currentDirtPlot;
+        Debug.Log("Stage 2 currentDirtPlot = " + currentDirtPlot);
 
         yield return new WaitForSeconds(growthTime);
 
@@ -55,6 +56,7 @@ public abstract class Crop : MonoBehaviour //INHERITANCE
         //Debug.Log("Stage 3");
         spawnCropThree = Instantiate(stageThreeCrop, gameObject.transform.position, gameObject.transform.rotation);
         spawnCropThree.tag = "Crop" + currentDirtPlot;
+        Debug.Log("Stage 3 currentDirtPlot = " + currentDirtPlot);
 
 
         //yield return new WaitForSeconds(growthTime);

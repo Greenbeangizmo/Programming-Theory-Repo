@@ -31,6 +31,7 @@ TagManager:
   - Crop22
   - Crop23
   - Crop24
+  - WaterWell
   layers:
   - Default
   - TransparentFX

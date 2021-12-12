@@ -14,38 +14,63 @@ public class DirtPlot : MonoBehaviour
 
     private GameObject spawnCrop;
 
+    private CropManager cropManagerScript;
+
+    private void Start()
+    {
+        cropManagerScript = GameObject.Find("Crop Manager").GetComponent<CropManager>();
+    }
+
     public void PlantPotato(int currentDirtPlot)
     {
         Debug.Log("Potato seed planted at dirt plot: " + currentDirtPlot);
         isPlanted = true;
-        spawnCrop = Instantiate(crops[0], gameObject.transform.position, gameObject.transform.rotation);
+        GameManager.PotatoSeeds--;
+        cropManagerScript.inventoryValues[1].text = "x" + GameManager.PotatoSeeds;
+        spawnCrop = Instantiate(cropManagerScript.cropStages[0], gameObject.transform.position, gameObject.transform.rotation);
         spawnCrop.tag = "Crop" + currentDirtPlot;
-        crops[0].GetComponent<Potato>().currentDirtPlot = currentDirtPlot;
+        spawnCrop.GetComponent<Potato>().currentDirtPlot = currentDirtPlot;
         
     }
     public void PlantTomato(int currentDirtPlot)
     {
         Debug.Log("Tomato seed planted at dirt plot: " + currentDirtPlot);
         isPlanted = true;
-        Instantiate(crops[1], gameObject.transform.position, gameObject.transform.rotation);
+        GameManager.TomatoSeeds--;
+        cropManagerScript.inventoryValues[2].text = "x" + GameManager.TomatoSeeds;
+        spawnCrop = Instantiate(cropManagerScript.cropStages[3], gameObject.transform.position, gameObject.transform.rotation);
+        spawnCrop.tag = "Crop" + currentDirtPlot;
+        spawnCrop.GetComponent<Tomato>().currentDirtPlot = currentDirtPlot;
     }
     public void PlantCorn(int currentDirtPlot)
     {
         Debug.Log("Corn seed planted at dirt plot: " + currentDirtPlot);
         isPlanted = true;
-        Instantiate(crops[2], gameObject.transform.position, gameObject.transform.rotation);
+        GameManager.CornSeeds--;
+        cropManagerScript.inventoryValues[3].text = "x" + GameManager.CornSeeds;
+        spawnCrop = Instantiate(cropManagerScript.cropStages[6], gameObject.transform.position, gameObject.transform.rotation);
+        spawnCrop.tag = "Crop" + currentDirtPlot;
+        spawnCrop.GetComponent<Corn>().currentDirtPlot = currentDirtPlot;
     }
     public void PlantCarrot(int currentDirtPlot)
     {
         Debug.Log("Carrot seed planted at dirt plot: " + currentDirtPlot);
         isPlanted = true;
-        Instantiate(crops[3], gameObject.transform.position, gameObject.transform.rotation);
+        GameManager.CarrotSeeds--;
+        cropManagerScript.inventoryValues[4].text = "x" + GameManager.CarrotSeeds;
+        spawnCrop = Instantiate(cropManagerScript.cropStages[9], gameObject.transform.position, gameObject.transform.rotation);
+        spawnCrop.tag = "Crop" + currentDirtPlot;
+        spawnCrop.GetComponent<Carrot>().currentDirtPlot = currentDirtPlot;
     }
     public void PlantWatermelon(int currentDirtPlot)
     {
         Debug.Log("Watermelon seed planted at dirt plot: " + currentDirtPlot);
         isPlanted = true;
-        Instantiate(crops[4], gameObject.transform.position, gameObject.transform.rotation);
+        GameManager.WatermelonSeeds--;
+        cropManagerScript.inventoryValues[5].text = "x" + GameManager.WatermelonSeeds;
+        spawnCrop = Instantiate(cropManagerScript.cropStages[12], gameObject.transform.position, gameObject.transform.rotation);
+        spawnCrop.tag = "Crop" + currentDirtPlot;
+        spawnCrop.GetComponent<Watermelon>().currentDirtPlot = currentDirtPlot;
     }
 
 

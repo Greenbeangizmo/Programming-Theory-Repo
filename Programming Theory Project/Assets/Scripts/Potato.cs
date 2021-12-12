@@ -9,11 +9,9 @@ public class Potato : Crop //INHERITANCE
         growthTime = 10;
         cropName = "Potato";
 
-        stageOne = 0;
+        stageOne = 0; //See Crop script for value reference
         stageTwo = 1;
         stageThree = 2;
-
-        
 
         //currentDirtPlot is given from DirtPlot script on Instantiation
 
